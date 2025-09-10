@@ -299,7 +299,7 @@ unsigned char *find_jpeg_image(const unsigned char *data, const size_t len, unsi
 unsigned char *find_png_eoi(unsigned char *buffer, const size_t len) {
     unsigned char *end_data, *data, chunk_code[PNG_CODE_LEN + 1];
     struct png_chunk chunk;
-    u_int32_t datalen;
+    uint32_t datalen;
 
     /* Move past the PNG header */
     data = (buffer + PNG_SIG_LEN);
@@ -462,11 +462,11 @@ unsigned char *find_avif_image(const unsigned char *data, const size_t len, unsi
     avifhdr = avifhdr - 4;
 
     unsigned char *current_box = avifhdr;
-    u_int32_t current_box_len = __bswap_32(*((u_int32_t*) avifhdr));
+    uint32_t current_box_len = __bswap_32(*((uint32_t*) avifhdr));
 
     while (len > (current_box + current_box_len + 8) - avifhdr) {
         current_box = current_box + current_box_len;
-        current_box_len = __bswap_32(*((u_int32_t *) current_box));
+        current_box_len = __bswap_32(*((uint32_t *) current_box));
 
         unsigned char *current_box_type = current_box + 4;
 
@@ -475,7 +475,7 @@ unsigned char *find_avif_image(const unsigned char *data, const size_t len, unsi
             continue;
         }
 
-        u_int32_t file_len = (current_box - avifhdr) + current_box_len;
+        uint32_t file_len = (current_box - avifhdr) + current_box_len;
 
         /* enough room ? */
         if (len >= file_len) {

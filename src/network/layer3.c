@@ -30,8 +30,8 @@
 int layer3_find_tcp(const u_char *pkt, uint8_t nextproto, int * offset,
 		struct sockaddr * src, struct sockaddr * dst, struct tcphdr * tcp)
 {
-	u_int16_t *sport = NULL;
-	u_int16_t *dport = NULL;
+	uint16_t *sport = NULL;
+	uint16_t *dport = NULL;
 
 	while (1) {
 		switch (nextproto) {

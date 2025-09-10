@@ -39,7 +39,7 @@
 struct ethhdr {
 	unsigned char   h_dest[ETH_ALEN];
 	unsigned char   h_source[ETH_ALEN];
-	u_int16_t       h_proto;
+	uint16_t       h_proto;
 } __attribute__((packed));
 #endif
 
@@ -55,19 +55,19 @@ struct ethhdr {
 #endif
 
 struct ieee80211_radiotap_header {
-	u_int8_t        it_version;     /* set to 0 */
-	u_int8_t        it_pad;
-	u_int16_t       it_len;         /* entire length */
-	u_int32_t       it_present;     /* fields present */
+	uint8_t        it_version;     /* set to 0 */
+	uint8_t        it_pad;
+	uint16_t       it_len;         /* entire length */
+	uint32_t       it_present;     /* fields present */
 };
 
 struct ieee80211_frame {
-    u_int16_t fc;
-    u_int16_t wi_duration;
-    u_int8_t wi_add1[6];
-    u_int8_t wi_add2[6];
-    u_int8_t wi_add3[6];
-    u_int16_t wi_sequenceControl;
+    uint16_t fc;
+    uint16_t wi_duration;
+    uint8_t wi_add1[6];
+    uint8_t wi_add2[6];
+    uint8_t wi_add3[6];
+    uint16_t wi_sequenceControl;
     // u_int8_t wi_add4[6];
     //unsigned int qosControl:2;
     //unsigned int frameBody[23124];
@@ -89,13 +89,13 @@ struct frame_control {
 
 /* SNAP LLC header format */
 struct snap_header {
-  u_int8_t dsap;
-  u_int8_t ssap;
-  u_int8_t ctl;
-  u_int8_t org1;
-  u_int8_t org2;
-  u_int8_t org3;
-  u_int16_t ether_type;          /* ethernet type */
+  uint8_t dsap;
+  uint8_t ssap;
+  uint8_t ctl;
+  uint8_t org1;
+  uint8_t org2;
+  uint8_t org3;
+  uint16_t ether_type;          /* ethernet type */
 };
 
 /*
