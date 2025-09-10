@@ -7,6 +7,8 @@
  *
  */
 
+#include "compat/compat.h"
+
 #include <stdarg.h>
 #include <stddef.h>
 #include <setjmp.h>
@@ -244,7 +246,7 @@ void test_dont_parse_other_formats(void** state)
     }
 }
 
-void test_correct_media_drivers_for_mediatype_count()
+void test_correct_media_drivers_for_mediatype_count(void **state)
 {
     drivers_t* image_drivers = NULL;
     drivers_t* audio_drivers = NULL;
