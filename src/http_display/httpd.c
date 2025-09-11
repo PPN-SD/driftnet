@@ -177,26 +177,11 @@ static void * http_server_dispatch(void *arg)
     };
 
    const struct lws_http_mount mount = {
-        (struct lws_http_mount *)NULL,	/* linked-list pointer to next*/
-        "/",		                    /* mountpoint in URL namespace on this vhost */
-        server_root,                    /* where to go on the filesystem for that */
-        "index.html",	                /* default filename if none given */
-        NULL,
-        NULL,
-        mime_types,
-        NULL,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        LWSMPRO_FILE,	                /* mount type is a directory in a filesystem */
-        1,		                        /* strlen("/"), ie length of the mountpoint */
-        NULL,
-#if LWS_LIBRARY_VERSION_MAJOR <= 4 && LWS_LIBRARY_VERSION_MINOR < 3
-        { NULL, NULL } // sentinel
-#endif
+	.mountpoint		= "/",
+	.origin			= server_root,
+	.origin_protocol	= LWSMPRO_FILE,
+	.extra_mimetypes        = mime_types,
+	.mountpoint_len		= 1,
     };
 
     memset(&info, 0, sizeof info);
